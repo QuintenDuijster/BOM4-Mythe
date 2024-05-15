@@ -16,4 +16,4 @@ MonoBehaviour:
   Name: PlaceHolder
   Health: 99
   Power: 99
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: 130620a866f701840a97d45083374342, type: 3}

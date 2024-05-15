@@ -12,6 +12,7 @@ public class Card : ScriptableObject
     public int Health;
     public int Power;
     public Sprite Image;
+    public int Mana;
 
 
 
@@ -19,10 +20,11 @@ public class Card : ScriptableObject
     {
 
     }
-    public Card(int id, string name, int health, int power, Sprite image)
+    public Card(int id, string name, int mana, int health, int power, Sprite image)
     {
         this.Id = id;
         this.Name = name;
+        this.Mana = mana;
         this.Health = health;
         this.Power = power;
         this.Image = image;

@@ -13,7 +13,7 @@ public class PlayerDeck : MonoBehaviour
     void Start()
     {
         deckSize = 20;
-        Psychedeck.Count = deckSize;
+        //Psychedeck.Count = deckSize;
         
         
 

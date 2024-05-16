@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class DropHere : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
+
+
     public void OnPointerEnter(PointerEventData eventData)
     {
 
@@ -16,8 +18,6 @@ public class DropHere : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log(eventData.pointerDrag.name);
-
         Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
         if (d != null)
         {

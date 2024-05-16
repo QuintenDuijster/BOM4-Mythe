@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    Vector2 relativeStartPosition;
     public Image image;
     public Transform parentToReturnTo = null;
     public void OnBeginDrag(PointerEventData eventData)
@@ -13,7 +12,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         parentToReturnTo = this.transform.parent;
         this.transform.SetParent(this.transform.parent.parent);
 
-        GetComponent<CanvasGroup>().blocksRaycasts = true;
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -23,6 +22,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         this.transform.SetParent(parentToReturnTo);
 
-        GetComponent<CanvasGroup>().blocksRaycasts = true;
+        CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
+        canvasGroup.blocksRaycasts = true;
     }
 }

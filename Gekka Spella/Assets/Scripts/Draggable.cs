@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Image image;
-    public Transform parentToReturnTo = null;
+    [HideInInspector]public Transform parentToReturnTo = null;
     public void OnBeginDrag(PointerEventData eventData)
     {
         parentToReturnTo = this.transform.parent;

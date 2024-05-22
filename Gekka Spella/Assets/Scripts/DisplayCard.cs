@@ -8,36 +8,30 @@ using UnityEngine.UI;
 
 public class DisplayCard : MonoBehaviour
 {
-    // Mogelijke kaarttypes
-    
-
-
-
     public TextMeshProUGUI NameText;
     public TextMeshProUGUI PowerText;
     public TextMeshProUGUI HealthText;
     public TextMeshProUGUI ManaText;
     public Image image;
 
-    // kaarten die dan gemaakt woorden
-  
-    // Start is called before the first frame update
-    void Start()
-    {
+    private CardSettings _cardType; 
 
-    }
+    public void Init(CardSettings cardType) {
 
-    // Update is called once per frame
-    void Update()
-    {
+        
+        _cardType = cardType;
+
         ShowStats();
+     
     }
+  
    void ShowStats()
     {
-      /*  NameText.text = PlayerDeck.cards[PlayerDeck.cards.Count - 1].Name;
-        PowerText.text = PlayerDeck.cards[PlayerDeck.cards.Count - 1].Power.ToString();
-        HealthText.text = PlayerDeck.cards[PlayerDeck.cards.Count - 1].Health.ToString();
-        ManaText.text = PlayerDeck.cards[PlayerDeck.cards.Count - 1].Mana.ToString();
-        image.sprite = PlayerDeck.cards[PlayerDeck.cards.Count - 1].Image; */
+       
+        NameText.text = _cardType.MName;
+        PowerText.text = _cardType.Power.ToString();
+        HealthText.text = _cardType.Health.ToString();
+        ManaText.text = _cardType.ManaCost.ToString();
+        image.sprite = _cardType.Image; 
     }
 }

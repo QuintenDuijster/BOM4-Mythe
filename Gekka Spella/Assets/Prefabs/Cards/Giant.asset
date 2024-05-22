@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Giant
   m_EditorClassIdentifier: 
   Id: 3
-  Name: Giant
+  MName: Giant
   Health: 8
-  Power: 4
+  Power: 5
   Image: {fileID: 0}
-  Mana: 7
+  ManaCost: 4

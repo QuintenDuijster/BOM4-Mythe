@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Cerberus
   m_EditorClassIdentifier: 
   Id: 5
-  Name: Cerberus
-  Health: 0
-  Power: 0
+  MName: Cerberus
+  Health: 3
+  Power: 4
   Image: {fileID: 0}
-  Mana: 0
+  ManaCost: 2

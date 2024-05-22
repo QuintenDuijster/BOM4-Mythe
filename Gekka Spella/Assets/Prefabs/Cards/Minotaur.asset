@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Minotaur
   m_EditorClassIdentifier: 
   Id: 1
-  Name: Minotaur
+  MName: Minotaur
   Health: 3
   Power: 2
   Image: {fileID: 0}
+  ManaCost: 1

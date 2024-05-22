@@ -43,7 +43,7 @@ public class PlayerDeck : MonoBehaviour
 
       
 
-
+        
         var NewCard = Instantiate(CardToHand);
 
         
@@ -64,6 +64,7 @@ public class PlayerDeck : MonoBehaviour
         public void Shuffle(List<CardSettings> deck)
         {
             CardSettings cardsetting = deck[Random.Range(0, deck.Count)];
+            
         }
 
     
@@ -79,7 +80,7 @@ public class PlayerDeck : MonoBehaviour
 
     IEnumerator StartGame()
     {
-        Shuffle(deck);
+        //Shuffle(deck);
         for (int i = 0; i < beginningHand; i++) { 
             DrawCard(i);
             yield return new WaitForSeconds(1);

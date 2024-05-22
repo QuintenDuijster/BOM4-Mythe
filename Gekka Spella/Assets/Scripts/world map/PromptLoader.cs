@@ -1,3 +1,4 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,14 +6,18 @@ using UnityEditor.SceneManagement;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
-public class PromprLoader : MonoBehaviour
+public class PrompLoader : MonoBehaviour
 {
-    [SerializeField] public string SceneToLoad; 
+    [SerializeField] public string SceneToLoad;
     [SerializeField] internal GameObject Canvas;
-    public SceneLoader loader;
-  
-
+    [SerializeField] public GameObject promptBackGround;
+    [SerializeField] public Sprite imgToLoad; 
+    [SerializeField] public SceneLoader loader;
+    
     private void OnTriggerEnter(Collider other)
     {
         ChangePrompt();
@@ -42,8 +47,12 @@ public class PromprLoader : MonoBehaviour
     }
     public void ChangePrompt()
     {
-        loader.Scene = SceneToLoad;
-        Debug.Log(loader.Scene);
+        Image image = promptBackGround.GetComponent<Image>();
+        image.sprite = imgToLoad;
+        loader.Scene = SceneToLoad; 
+       
+      
+
     }
 
   

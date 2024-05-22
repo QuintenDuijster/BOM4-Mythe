@@ -48,14 +48,19 @@ public class Dialogue : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log(index);
-            BackLine();
+            if(textComponent.text == lines[index])
+            {
+                Debug.Log(index);
+                BackLine();
+            }
+            else
+            {
+                StopAllCoroutines();
+                textComponent.text = lines[index];
+            }
             
         }
-        else
-        {
-            
-        }
+        
     }
 
     

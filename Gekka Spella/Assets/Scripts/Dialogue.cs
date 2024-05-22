@@ -3,18 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
+using System;
 
 public class Dialogue : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
     public string[] lines;
     public float textSpeed;
+    public GameObject button;
 
-    private int index;
+    private int index = 0;
 
 
     void Start()
     {
+        if (button.activeInHierarchy == true)
+        {
+            button.SetActive(false);
+
+        }
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -26,6 +34,7 @@ public class Dialogue : MonoBehaviour
         {
             if(textComponent.text == lines[index])
             {
+                Debug.Log(index);
                 NextLine();
             }
             else
@@ -35,6 +44,17 @@ public class Dialogue : MonoBehaviour
 
                 
             }
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log(index);
+            BackLine();
+            
+        }
+        else
+        {
+            
         }
     }
 
@@ -67,6 +87,23 @@ public class Dialogue : MonoBehaviour
         else
         {
             gameObject.SetActive(false);
+
+            if (button.activeInHierarchy == false)
+            {
+                button.SetActive(true);
+
+            }
         }
+    }
+
+    void BackLine()
+    {
+        if(index >= 1)
+        {
+            index--;
+            textComponent.text = string.Empty;
+            StartCoroutine (TypeLine());
+        }
+
     }
 }

@@ -123,7 +123,7 @@ public class PlayerDeck : MonoBehaviour
     {
         for (int i = 0; i < beginningHand; i++)
         {
-            DrawCard(i);
+            DrawCard(0);//use 0 only draw the top card
             yield return new WaitForSeconds(1);
         }
     }

@@ -14,7 +14,10 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(Scene);
     }
 
-   
+    public void secret() 
+    {
+        SceneManager.LoadScene("secret");
+    }
 }
 
 

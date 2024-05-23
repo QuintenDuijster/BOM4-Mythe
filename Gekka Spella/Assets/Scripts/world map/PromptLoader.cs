@@ -17,20 +17,24 @@ public class PrompLoader : MonoBehaviour
     [SerializeField] public GameObject promptBackGround;
     [SerializeField] public Sprite imgToLoad; 
     [SerializeField] public SceneLoader loader;
-    
+    [SerializeField] public promptSlide slide;
     private void OnTriggerEnter(Collider other)
     {
         ChangePrompt();
-        enablePrompt();
+        //enablePrompt();
+        slide.onscreen = true;
+        slide.Onlocation = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        disablePrompt();
+       //disablePrompt();
+        slide.onscreen = false;
+        slide.Onlocation = true;
     }
     internal void Start()
     {
-        disablePrompt();
+        //disablePrompt();
     }
 
 

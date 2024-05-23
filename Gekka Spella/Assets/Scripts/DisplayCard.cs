@@ -18,11 +18,9 @@ public class DisplayCard : MonoBehaviour
 
     public void Init(CardSettings cardType) {
 
-        
         _cardType = cardType;
 
         ShowStats();
-     
     }
   
    void ShowStats()

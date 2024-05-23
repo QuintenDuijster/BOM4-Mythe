@@ -1,6 +1,3 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
 
@@ -13,9 +10,4 @@ public class CardSettings : ScriptableObject
     public int Power;
     public Sprite Image;
     public int ManaCost;
-
-
-
- 
-
 }

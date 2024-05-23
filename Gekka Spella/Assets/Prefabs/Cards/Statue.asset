@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 10
   MName: Statue
-  Health: 15
+  Health: 10
   Power: 0
   Image: {fileID: 0}
   ManaCost: 0

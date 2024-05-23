@@ -21,33 +21,14 @@ public class PrompLoader : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         ChangePrompt();
-        //enablePrompt();
         slide.onscreen = true;
         slide.Onlocation = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-       //disablePrompt();
         slide.onscreen = false;
         slide.Onlocation = true;
-    }
-    internal void Start()
-    {
-        //disablePrompt();
-    }
-
-
-
-    public void disablePrompt()
-    {
-        
-        Canvas.SetActive(false); 
-    }
-    public void enablePrompt()
-    {       
-        Canvas.SetActive(true);
-       
     }
     public void ChangePrompt()
     {

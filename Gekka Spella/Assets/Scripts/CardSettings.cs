@@ -10,4 +10,8 @@ public class CardSettings : ScriptableObject
     public int Power;
     public Sprite Image;
     public int ManaCost;
+    public void OnDestroy()
+    {
+        Debug.Log("OnDestroy");
+    }
 }

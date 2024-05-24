@@ -14,11 +14,11 @@ public class DisplayCard : MonoBehaviour
     public TextMeshProUGUI ManaText;
     public Image image;
 
-    private CardSettings _cardType; 
+    private CardSettings cardType; 
 
     public void Init(CardSettings cardType) {
 
-        _cardType = cardType;
+       this. cardType = cardType;
 
         ShowStats();
     }
@@ -26,10 +26,10 @@ public class DisplayCard : MonoBehaviour
    void ShowStats()
     {
        
-        NameText.text = _cardType.MName;
-        PowerText.text = _cardType.Power.ToString();
-        HealthText.text = _cardType.Health.ToString();
-        ManaText.text = _cardType.ManaCost.ToString();
-        image.sprite = _cardType.Image; 
+        NameText.text = cardType.MName;
+        PowerText.text =cardType.Power.ToString();
+        HealthText.text = cardType.Health.ToString();
+        ManaText.text = cardType.ManaCost.ToString();
+        image.sprite = cardType.Image; 
     }
 }

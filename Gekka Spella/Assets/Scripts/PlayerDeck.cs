@@ -11,15 +11,16 @@ public class PlayerDeck : MonoBehaviour
     public GameObject CardPrefab;
     public GameObject Hand;
     //public List<CardSettings> container = new List<CardSettings>();
-    [SerializeField]private List<CardSettings> deck;
+    [SerializeField]private List<CardSettings> deck;//don't alter/touch
+    List<CardSettings> runDeck = new List<CardSettings>();
     public int beginningHand = 0;
    // public int deckSize;
-    public List<GameObject> cardsInHand = new List<GameObject>();
+    private List<GameObject> cardsInHand = new List<GameObject>();
     public GameObject CardToHand;
     void Start()
     {
         //beginningHand = 5;
-        deck = Shuffle(deck);
+        Shuffle(deck);
 
         StartCoroutine(StartGame());
     }
@@ -55,9 +56,9 @@ public class PlayerDeck : MonoBehaviour
         cardsInHand.Add(NewCard);
 
         DisplayCard dcs = NewCard.GetComponent<DisplayCard>();
-        dcs.Init(deck[cardIndex]);
+        dcs.Init(runDeck[cardIndex]);
 
-        deck.RemoveAt(cardIndex);
+        runDeck.RemoveAt(cardIndex);
         /*
         Debug.Log("!!");
         foreach (CardSettings settings in deck) {
@@ -71,10 +72,9 @@ public class PlayerDeck : MonoBehaviour
         //NewCard.GetComponent<CardHolder>().LoadCardData(CardData);
     }
 
-        List<CardSettings> tempList = new List<CardSettings>();
-    public List<CardSettings> Shuffle(List<CardSettings> deck)
+    public void Shuffle(List<CardSettings> deck)
     {
-        return deck = deck.OrderBy(x => Random.value).ToList();
+        runDeck = deck.OrderBy(x => Random.value).ToList();
 
 
 

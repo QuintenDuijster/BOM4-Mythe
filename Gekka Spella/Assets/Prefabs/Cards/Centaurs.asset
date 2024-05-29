@@ -16,5 +16,5 @@ MonoBehaviour:
   MName: Centaurs
   Health: 5
   Power: 2
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: ae8484d7172dd5144b47fbadab9ee601, type: 3}
   ManaCost: 1

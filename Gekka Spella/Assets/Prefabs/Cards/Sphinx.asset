@@ -16,5 +16,5 @@ MonoBehaviour:
   MName: Sphinx
   Health: 4
   Power: 3
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: 9629cf8cc07367e4bb8c3098c32c129c, type: 3}
   ManaCost: 2

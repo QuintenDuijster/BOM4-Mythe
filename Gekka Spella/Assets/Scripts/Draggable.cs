@@ -5,10 +5,13 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+
     public Image image;
     public Transform parentToReturnTo = null;
+    
     public void OnBeginDrag(PointerEventData eventData)
     {
+        
         parentToReturnTo = this.transform.parent;
         this.transform.SetParent(this.transform.parent.parent);
 
@@ -20,9 +23,11 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     }
     public void OnEndDrag(PointerEventData eventData)
     {
+        
         this.transform.SetParent(parentToReturnTo);
 
         CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.blocksRaycasts = true;
+
     }
 }

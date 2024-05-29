@@ -27,7 +27,7 @@ public class DisplayCard : MonoBehaviour
     {
        
         NameText.text = cardType.MName;
-        PowerText.text =cardType.Power.ToString();
+        PowerText.text = cardType.Power.ToString();
         HealthText.text = cardType.Health.ToString();
         ManaText.text = cardType.ManaCost.ToString();
         image.sprite = cardType.Image; 

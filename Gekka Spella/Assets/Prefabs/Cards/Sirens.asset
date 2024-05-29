@@ -16,5 +16,5 @@ MonoBehaviour:
   MName: Sirens
   Health: 3
   Power: 2
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: d5fb97da8c914da428ec3c1cf625fe98, type: 3}
   ManaCost: 1

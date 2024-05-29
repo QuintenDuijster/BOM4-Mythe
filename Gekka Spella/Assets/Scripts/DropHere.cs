@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class DropHere : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
-
+    private int numberofcardshere;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -17,11 +17,16 @@ public class DropHere : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     }
 
     public void OnDrop(PointerEventData eventData)
-    {
-        Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
-        if (d != null)
+    {   
+        if (numberofcardshere < 1)
         {
-            d.parentToReturnTo = this.transform;
+            Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
+            if (d != null)
+            {
+                d.parentToReturnTo = this.transform;
+                numberofcardshere++;
+            }
         }
+
     }
 }

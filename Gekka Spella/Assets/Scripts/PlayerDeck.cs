@@ -19,35 +19,13 @@ public class PlayerDeck : MonoBehaviour
     public GameObject CardToHand;
     void Start()
     {
-        //beginningHand = 5;
         Shuffle(deck);
 
         StartCoroutine(StartGame());
     }
 
-    void Update()
-    {
-
-    }
     public void DrawCard(int cardIndex)
-    {
-        /* var a = new CardHolder(cards[cardIndex]);
-
-         var b = Instantiate(CardPrefab);
-         b.GetComponent<CardToHand>().Spawn(Hand);
-         var CardObject = b.AddComponent<CardHolder>();
-         CardObject = a;
-
-         CardObject.card.Mana = cardTypes[cardIndex].Mana;
-         CardObject.card.Power = cardTypes[cardIndex].Power;
-         CardObject.card.Health = cardTypes[cardIndex].Health;
-         CardObject.card.Image = cardTypes[cardIndex].Image;
-
-         cards.Add(CardObject.card);*/
-
-      
-
-        
+    {   
         var NewCard = Instantiate(CardToHand);
 
         
@@ -59,65 +37,12 @@ public class PlayerDeck : MonoBehaviour
         dcs.Init(runDeck[cardIndex]);
 
         runDeck.RemoveAt(cardIndex);
-        /*
-        Debug.Log("!!");
-        foreach (CardSettings settings in deck) {
-            Debug.Log(settings.MName);
-        }
-       
-
-        */
-        
-
-        //NewCard.GetComponent<CardHolder>().LoadCardData(CardData);
     }
 
     public void Shuffle(List<CardSettings> deck)
     {
         runDeck = deck.OrderBy(x => Random.value).ToList();
-
-
-
-        ////Debug.Log("deck count " + deck.Count);
-        //int random = Random.Range(0, deck.Count - 1);
-
-        ////Debug.Log("random" + random);
-
-        //CardSettings toSwap = deck[random];
-        //tempList.Add(toSwap);
-        //deck.RemoveAt(random);
-
-
-        //if (deck.Count > 0)
-        //{
-        //    Shuffle(deck);
-
-        //}
-        //else
-        //{
-        //    //Debug.Log("templist count " + tempList.Count);
-
-        //    deck = new List<CardSettings>();
-        //    foreach (CardSettings s in tempList)
-        //    {
-        //        deck.Add(s);
-        //    }
-        //    tempList = null;
-        //    tempList = new List<CardSettings>();
-
-        //}
     }
-
-
-    /* public void Shuffle()
-      {
-          for (int i = 0; i < deckSize; i++)
-          {
-              int randomIndex = Random.Range(0, deckSize-1);
-              container[0] = deck[randomIndex];
-          }
-      }*/
-
 
     IEnumerator StartGame()
     {

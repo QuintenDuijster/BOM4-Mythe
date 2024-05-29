@@ -697,7 +697,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardPrefab: {fileID: 0}
   Hand: {fileID: 0}
-  container: []
   deck:
   - {fileID: 0}
   - {fileID: 0}
@@ -720,8 +719,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   beginningHand: 5
-  deckSize: 20
-  cardsInHand: []
   CardToHand: {fileID: 0}
 --- !u!1 &1095903983
 GameObject:
@@ -1033,6 +1030,17 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1839651978 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9220572170085135248, guid: ba6c92a17a537f7448dc611d97f37d11, type: 3}
+  m_PrefabInstance: {fileID: 1944466332}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1944466332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1125,7 +1133,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2560009992763113206, guid: ba6c92a17a537f7448dc611d97f37d11, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1181,7 +1190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6222b83bdbaf0f14ca028e7e0d64db91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
+  image: {fileID: 1839651978}
   parentToReturnTo: {fileID: 0}
 --- !u!225 &1944466337
 CanvasGroup:

@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Button : MonoBehaviour
+public class slider : MonoBehaviour
 {
     [SerializeField] private string NewGameLevel = "Main";
     [SerializeField] GameObject pos1;
@@ -14,10 +13,10 @@ public class Button : MonoBehaviour
     bool slide = false;
     public void NewGameButton()
     {
-        slider();
+        Slider();
     }
 
-    public void slider()
+    private void Slider()
     {
         slide = true;
     }
@@ -33,9 +32,8 @@ public class Button : MonoBehaviour
             {
                 Debug.Log("newScene");
                 SceneManager.LoadScene(NewGameLevel);
-               
+
             }
         }
     }
-    
 }

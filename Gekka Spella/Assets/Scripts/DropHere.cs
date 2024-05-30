@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class DropHere : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    private int numberofcardshere;
+    internal int numberofcardshere;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -13,7 +13,7 @@ public class DropHere : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-
+        
     }
 
     public void OnDrop(PointerEventData eventData)

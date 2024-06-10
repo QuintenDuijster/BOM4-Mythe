@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8c9f46eddd86b945838add71e1f8c9e, type: 3}
-  m_Name: Statue
+  m_Name: Medusa
   m_EditorClassIdentifier: 
-  Id: 10
-  MName: Statue
-  Health: 10
-  Power: 0
-  Image: {fileID: 21300000, guid: 32d8eae8fdeb4a7488c923f546f648fa, type: 3}
-  ManaCost: 0
+  Id: 2
+  MName: Medusa
+  Health: 4
+  Power: 5
+  Image: {fileID: 21300000, guid: adf919e946ea3ae458c35c75d5d088c9, type: 3}
+  ManaCost: 4

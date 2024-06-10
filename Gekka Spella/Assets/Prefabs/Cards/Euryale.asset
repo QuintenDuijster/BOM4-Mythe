@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c9f46eddd86b945838add71e1f8c9e, type: 3}
   m_Name: Euryale
   m_EditorClassIdentifier: 
-  Id: 0
-  MName: 
+  Id: 16
+  MName: Euryale
   Health: 0
   Power: 0
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: 7c20626b902b0664f8b2664d1ce69c18, type: 3}
   ManaCost: 0

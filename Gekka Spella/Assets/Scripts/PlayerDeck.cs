@@ -17,13 +17,22 @@ public class PlayerDeck : MonoBehaviour
    // public int deckSize;
     private List<GameObject> cardsInHand = new List<GameObject>();
     public GameObject CardToHand;
+    public GameObject cardInDeck1;
+    public GameObject cardInDeck2;
+    public GameObject cardInDeck3;
+    public GameObject cardInDeck4;
+
+
     void Start()
     {
         Shuffle(deck);
 
         StartCoroutine(StartGame());
     }
-
+    private void Update()
+    {
+        DeckVisuals();
+    }
     public void DrawCard(int cardIndex)
     {   
         var NewCard = Instantiate(CardToHand);
@@ -50,6 +59,25 @@ public class PlayerDeck : MonoBehaviour
         {
             DrawCard(0);//use 0 only draw the top card
             yield return new WaitForSeconds(1);
+        }
+    }
+    public void DeckVisuals()
+    {
+        if (runDeck.Count < 20)
+        {
+            cardInDeck1.SetActive(false);
+        }
+        if (runDeck.Count < 13)
+        {
+            cardInDeck2.SetActive(false);
+        }
+        if (runDeck.Count < 7)
+        {
+            cardInDeck3.SetActive(false);
+        }
+        if (runDeck.Count < 1)
+        {
+            cardInDeck4.SetActive(false);
         }
     }
 }

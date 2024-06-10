@@ -16,5 +16,5 @@ MonoBehaviour:
   MName: Cerberus
   Health: 3
   Power: 4
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: 592fac978a06d9e4c807ea9a5fe912f9, type: 3}
   ManaCost: 2

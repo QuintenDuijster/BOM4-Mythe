@@ -9,27 +9,33 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     DropHere dropscript;
     public Image image;
     public Transform parentToReturnTo = null;
+    internal int turnsexisted = 0;
+    internal bool ismelee;
     
     void Start()
     {
         dropscript = GetComponentInParent<DropHere>();
     }
+    void Update() 
+    { 
+        if (this.tag == "PlayerGraveCard" ||  this.tag == "EnemyGraveCard")
+        {
+            Destroy(this);
+        }
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-       /* if (dropscript.numberofcardshere == 1) 
-        {
-            dropscript.numberofcardshere--;
-        }*/
-        
-        parentToReturnTo = this.transform.parent;
-        this.transform.SetParent(this.transform.parent.parent);
 
-        GetComponent<CanvasGroup>().blocksRaycasts = false;
+            parentToReturnTo = this.transform.parent;
+            this.transform.SetParent(this.transform.parent.parent);
+
+            GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
     public void OnDrag(PointerEventData eventData)
     {
         this.transform.position = eventData.position;
+        
     }
     public void OnEndDrag(PointerEventData eventData)
     {
@@ -40,7 +46,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         canvasGroup.blocksRaycasts = true;
         string parentname;
         parentname = transform.parent.name;
-        Debug.Log(parentname);
         switch (parentname)
         {
             case "PlayerMeleePlace1":
@@ -73,7 +78,12 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             case "EnemyRangePlace2":
                 transform.gameObject.tag = "EnemyRangeCard2";
                 break;
-
+            case "PlayerGraveyard":
+                transform.gameObject.tag = "PlayerGraveCard";
+                break;
+            case "EnemyGraveyard":
+                transform.gameObject.tag = "EnemyGraveCard";
+                break;
         }
     }
 }

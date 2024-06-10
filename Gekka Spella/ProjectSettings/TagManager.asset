@@ -4,14 +4,18 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - EnemyMelee
-  - EnemyRange
-  - PlayerMelee
-  - PlayerRange
-  - PlayerMeleeCard
-  - PlayerRangeCard
-  - EnemyMeleeCard
-  - EnemyRangeCard
+  - PlayerMeleeCard1
+  - PlayerMeleeCard2
+  - PlayerMeleeCard3
+  - PlayerRangeCard1
+  - PlayerRangeCard2
+  - EnemyMeleeCard1
+  - EnemyMeleeCard2
+  - EnemyMeleeCard3
+  - EnemyRangeCard1
+  - EnemyRangeCard2
+  - PlayerGraveCard
+  - EnemyGraveCard
   layers:
   - Default
   - TransparentFX

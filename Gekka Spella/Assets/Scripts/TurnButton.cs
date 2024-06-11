@@ -5,31 +5,17 @@ using UnityEngine;
 
 public class TurnButton : MonoBehaviour
 {
+    [SerializeField] public bool isPlayerTurn = true;
 
-    public bool playerTurn = true;
-    // Start is called before the first frame update
-    void Start()
+    public void TogglePlayerTurn()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        isPlayerTurn = !isPlayerTurn;
 
-    public void OnButtonClick()
-    {
-        if (playerTurn = true)
+        if (isPlayerTurn == false)
         {
-            playerTurn = false;
-            Console.WriteLine("playerTurn: false");
+            Console.WriteLine("false");
         }
-        else
-        {
-            playerTurn = true;
-            Console.WriteLine("playerTurn: true");
-        }
+        else { Console.WriteLine("true"); }
     }
 }

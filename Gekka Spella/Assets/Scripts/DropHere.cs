@@ -6,7 +6,11 @@ using UnityEngine.EventSystems;
 public class DropHere : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
-
+    internal int childcount;
+    void Update()
+    {
+        childcount = transform.childCount;
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
 
@@ -19,7 +23,7 @@ public class DropHere : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     public void OnDrop(PointerEventData eventData)
     {
         Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
-        if (transform.childCount == 0)
+        if (childcount == 0)
         {
             if (d != null && this.name == "PlayerRangePlace1" && d.ismelee == false || 
                 this.name == "PlayerRangePlace2" && 

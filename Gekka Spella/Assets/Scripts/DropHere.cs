@@ -25,9 +25,10 @@ public class DropHere : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
         if (childcount == 0)
         {
-            if (d != null && this.name == "PlayerRangePlace1" && d.ismelee == false || 
-                this.name == "PlayerRangePlace2" && 
+            if (d != null && this.name == "PlayerRangePlace1" && d.ismelee == false ||
+                this.name == "PlayerRangePlace2" &&
                 d.ismelee == false)
+                
             {
                 d.parentToReturnTo = this.transform;
                 d.ismelee = false;

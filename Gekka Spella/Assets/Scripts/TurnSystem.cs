@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,11 +13,14 @@ public class TurnSystem : MonoBehaviour
 
     public bool isYourTurn;
     public int yourTurn;
-    public int yourOponentTurn;
+    public int yourOpponentTurn;
     public TextMeshProUGUI turnText;
     public int maxMana;
     public int currentMana;
     public TextMeshProUGUI manaText;
+
+
+    public static Action OnEndTurn;
 
 
 
@@ -24,7 +28,7 @@ public class TurnSystem : MonoBehaviour
     {
         isYourTurn = true;
         yourTurn = 1;
-        yourOponentTurn = 0;
+        yourOpponentTurn = 0;
 
         maxMana = 10;
         currentMana = 5;
@@ -49,7 +53,9 @@ public class TurnSystem : MonoBehaviour
         if (isYourTurn == true)
         {
             isYourTurn = false;
-            yourOponentTurn += 1;
+            yourOpponentTurn += 1;
+
+            OnEndTurn?.Invoke();
         }
     }
 

@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
     internal List<GameObject> EnemyCardsinHand= new List<GameObject>();
     internal List<GameObject> EnemyCardsinRanged = new List<GameObject>();
     internal List<GameObject> EnemyCardsinMelee = new List<GameObject>();
+    [SerializeField]private int numberofactions;
     private GameObject movedrangecard;
     private GameObject movedmeleecard;
     [SerializeField]private GameObject enemyrange1;
@@ -17,21 +18,38 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]private GameObject enemymelee2;
     [SerializeField]private GameObject enemymelee3;
     [SerializeField]private GameObject enemydeck;
+    [SerializeField]private GameObject Turnsystem;
+    private TurnSystem turn;
+    private EnemyDeck deck;
+
     // Start is called before the first frame update
     void Start()
     {
-        
-        StartCoroutine(YIPPPEEE());
+        turn = Turnsystem.GetComponent<TurnSystem>();
+        deck = enemydeck.GetComponent<EnemyDeck>();
+
+
+        TurnSystem.OnEndTurn += handleOnEndTurn;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         
+        if (turn.isYourTurn == false)
+        {
+            StartCoroutine(YIPPPEEE());
+        }
+        else if (turn.isYourTurn == true)
+        {
+            StopCoroutine(YIPPPEEE());
+        }
     }
     private void ChooseRangeCard()
     {
-        EnemyDeck deck = GetComponent<EnemyDeck>();
+        
         GameObject chosencard;
         if (EnemyCardsinHand.Count > 0)
         {
@@ -92,7 +110,7 @@ public class EnemyAI : MonoBehaviour
         int number2 = Randomizer(1, 2);
         int spot1 = 0;
         int spot2 = 1;
-        EnemyDeck deck = GetComponent<EnemyDeck>();
+        
         GameObject chosencard;
         if (EnemyCardsinRanged != null && EnemyCardsinRanged.Count > 0)
         {
@@ -171,14 +189,27 @@ public class EnemyAI : MonoBehaviour
     }
     IEnumerator YIPPPEEE()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < numberofactions; i++)
         {
+            int number = Randomizer(1, 4);
             yield return new WaitForSeconds(5);
-            ChooseRangeCard();
-            MoveCardToRange(true);
-            ChooseMeleeCard();
-            MoveCardToMelee(true);
+            if (EnemyCardsinRanged.Count == 0)
+            {
+                ChooseRangeCard();
+                MoveCardToRange(true);
+            }
+            else {
+                ChooseMeleeCard();
+                MoveCardToMelee(true);
+            }
+            
+            
             
         }
+        
+    }
+    void handleOnEndTurn() 
+    {
+    
     }
 }

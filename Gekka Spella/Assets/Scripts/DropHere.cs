@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -43,5 +44,29 @@ public class DropHere : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
             d.parentToReturnTo = this.transform;
         }
 
+        //if (d != null && (this.name == "EnemyRangePlace1" || this.name == "EnemyRangePlace2") 
+        //    && d.ismelee == false && this.tag == "EnemyCard")
+        //{
+        //    Debug.Log("mamam");
+        //    d.parentToReturnTo = this.transform;
+        //    d.ismelee = false;
+        //}
+        //else if (d != null && (d.tag == "EnemyRangeCard1" ||
+        //    d.tag == "EnemyRangeCard2") && (this.name == "EnemyMeleePlace1" ||
+        //    this.name == "EnemyMeleePlace2" ||
+        //    this.name == "EnemyMeleePlace3")
+        //    )
+        //{
+        //    d.parentToReturnTo = this.transform;
+        //    d.ismelee = true;
+
+        //}
+        //if (this.name == "EnemyGraveyard" && this.tag == "EnemyCard")
+        //{
+        //    d.parentToReturnTo = this.transform;
+        //}
+
     }
+
 }
+

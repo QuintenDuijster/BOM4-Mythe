@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2719656086802256671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1991255510950119984}
+  - component: {fileID: 2239480723074746380}
+  m_Layer: 0
+  m_Name: EnemyDeck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1991255510950119984
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2719656086802256671}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2239480723074746380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2719656086802256671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906d3634c12f0f344b83e6d5eb67435e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardPrefab: {fileID: 5131307390485782418, guid: ef8ab9a8c6864f24e95ef36665ef2013, type: 3}
+  Hand: {fileID: 0}
+  deck:
+  - {fileID: 11400000, guid: 0af57de1f95c3b64ba29e25c268cc8cd, type: 2}
+  - {fileID: 11400000, guid: 43340d917c40bb848a25dc1503dfaf27, type: 2}
+  - {fileID: 11400000, guid: 2e5472039c1265c4f8dac2418b40e020, type: 2}
+  - {fileID: 11400000, guid: 6c0f790064e2d82459e4cf1352e56069, type: 2}
+  - {fileID: 11400000, guid: 692bc6a5d75ceff45b68b7a175861c14, type: 2}
+  - {fileID: 11400000, guid: 3c492413953e5e44d886f56d16336286, type: 2}
+  - {fileID: 11400000, guid: c42e46218667df74291a5d4f52bb9514, type: 2}
+  - {fileID: 11400000, guid: 632a180d587fd984a95dfc4ddbf423b4, type: 2}
+  - {fileID: 11400000, guid: 247b08983b2541444894cceb8ce0b455, type: 2}
+  - {fileID: 11400000, guid: f8dfe3d97a1b63244a19ae4b92f0d10b, type: 2}
+  - {fileID: 11400000, guid: 632a180d587fd984a95dfc4ddbf423b4, type: 2}
+  - {fileID: 11400000, guid: 3467f091a8efd934daad3b8866fddb6f, type: 2}
+  - {fileID: 11400000, guid: 3467f091a8efd934daad3b8866fddb6f, type: 2}
+  - {fileID: 11400000, guid: 5deadebe7ba8de841bbc0d7247d0eb77, type: 2}
+  - {fileID: 11400000, guid: 5deadebe7ba8de841bbc0d7247d0eb77, type: 2}
+  - {fileID: 11400000, guid: 3c492413953e5e44d886f56d16336286, type: 2}
+  - {fileID: 11400000, guid: 938b8d0453fa25b4cb8812f74d16b39e, type: 2}
+  - {fileID: 11400000, guid: d9e9d557868086a48bd90c6e958c39a5, type: 2}
+  - {fileID: 11400000, guid: 8b6d879775a0efd4994e6104eb0e007f, type: 2}
+  - {fileID: 11400000, guid: 692bc6a5d75ceff45b68b7a175861c14, type: 2}
+  - {fileID: 11400000, guid: 247b08983b2541444894cceb8ce0b455, type: 2}
+  - {fileID: 11400000, guid: 6c0f790064e2d82459e4cf1352e56069, type: 2}
+  - {fileID: 11400000, guid: d35f03823ab44df45ae49f45ad775d73, type: 2}
+  - {fileID: 11400000, guid: 0af57de1f95c3b64ba29e25c268cc8cd, type: 2}
+  - {fileID: 11400000, guid: 3c492413953e5e44d886f56d16336286, type: 2}
+  beginningHand: 5
+  CardToEnemyHand: {fileID: 5131307390485782418, guid: ef8ab9a8c6864f24e95ef36665ef2013, type: 3}
+  cardInDeck1: {fileID: 0}
+  cardInDeck2: {fileID: 0}
+  cardInDeck3: {fileID: 0}
+  cardInDeck4: {fileID: 0}

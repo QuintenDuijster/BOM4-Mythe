@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     DropHere dropscript;
-    public Image image;
+    
     public Transform parentToReturnTo = null;
     internal int turnsexisted = 0;
     internal bool ismelee;

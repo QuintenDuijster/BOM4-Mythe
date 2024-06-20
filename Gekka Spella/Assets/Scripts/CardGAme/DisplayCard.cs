@@ -14,8 +14,17 @@ public class DisplayCard : MonoBehaviour
     public TextMeshProUGUI ManaText;
     public Image image;
 
-    private CardSettings cardType; 
+    private CardSettings cardType;
 
+    internal int health;
+    internal int mana;
+    internal int power;
+    private void Update()
+    {
+        HealthText.text = health.ToString();
+        PowerText.text = power.ToString();
+        ManaText.text = mana.ToString();
+    }
     public void Init(CardSettings cardType) {
 
        this. cardType = cardType;
@@ -27,9 +36,17 @@ public class DisplayCard : MonoBehaviour
     {
        
         NameText.text = cardType.MName;
+        power = cardType.Power;
+        health = cardType.Health;
+        mana = cardType.ManaCost;
+        image.sprite = cardType.Image; 
+    }
+
+
+     /* NameText.text = cardType.MName;
         PowerText.text = cardType.Power.ToString();
         HealthText.text = cardType.Health.ToString();
         ManaText.text = cardType.ManaCost.ToString();
-        image.sprite = cardType.Image; 
-    }
+        image.sprite = cardType.Image;  */
+
 }

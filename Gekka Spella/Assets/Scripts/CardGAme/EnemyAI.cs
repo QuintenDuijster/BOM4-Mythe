@@ -9,9 +9,12 @@ public class EnemyAI : MonoBehaviour
     internal List<GameObject> EnemyCardsinHand= new List<GameObject>();
     internal List<GameObject> EnemyCardsinRanged = new List<GameObject>();
     internal List<GameObject> EnemyCardsinMelee = new List<GameObject>();
+
     [SerializeField]private int numberofactions;
+
     private GameObject movedrangecard;
     private GameObject movedmeleecard;
+
     [SerializeField]private GameObject enemyrange1;
     [SerializeField]private GameObject enemyrange2;
     [SerializeField]private GameObject enemymelee1;
@@ -19,6 +22,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]private GameObject enemymelee3;
     [SerializeField]private GameObject enemydeck;
     [SerializeField]private GameObject Turnsystem;
+
     private TurnSystem turn;
     private EnemyDeck deck;
 
@@ -36,16 +40,9 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         
-        if (turn.isYourTurn == false)
-        {
-            StartCoroutine(YIPPPEEE());
-        }
-        else if (turn.isYourTurn == true)
-        {
-            StopCoroutine(YIPPPEEE());
-        }
+        
+
     }
     private void ChooseRangeCard()
     {
@@ -58,7 +55,7 @@ public class EnemyAI : MonoBehaviour
                 chosencard = EnemyCardsinHand[0];
                 EnemyCardsinHand.RemoveAt(0);
                 movedrangecard = chosencard;
-                Debug.Log(movedrangecard + "Range");
+                
             }
             else
             {
@@ -192,7 +189,7 @@ public class EnemyAI : MonoBehaviour
         for (int i = 0; i < numberofactions; i++)
         {
             int number = Randomizer(1, 4);
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(2);
             if (EnemyCardsinRanged.Count == 0)
             {
                 ChooseRangeCard();
@@ -206,10 +203,18 @@ public class EnemyAI : MonoBehaviour
             
             
         }
+        turn.EndyourOponentTurn();
         
     }
     void handleOnEndTurn() 
     {
-    
+        if (turn.isYourTurn == false)
+        {
+            StartCoroutine(YIPPPEEE());
+        }
+        else if (turn.isYourTurn == true)
+        {
+            StopCoroutine(YIPPPEEE());
+        }
     }
 }

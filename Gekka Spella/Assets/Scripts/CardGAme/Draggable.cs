@@ -41,9 +41,11 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         string parentname;
         parentname = transform.parent.name;
         Debug.Log(parentname);
-        switch (parentname)
+
+       
+        switch (parentname)   
         {
-            case "PlayerMeleePlace1":
+            case "PlayerMeleePlace1": // i whanna kys
                 transform.gameObject.tag = "PlayerMeleeCard1";
                     break;
             case "PlayerMeleePlace2":

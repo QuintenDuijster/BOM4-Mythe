@@ -54,7 +54,7 @@ public class EnemyAI : MonoBehaviour
     }
     private void MoveCardToRange(bool isgood)
     {
-        int number = UnityEngine.Random.Range(1, 6);
+        int number = Randomizer(1, 6);
         
         if (number < 3)
         {
@@ -88,8 +88,8 @@ public class EnemyAI : MonoBehaviour
 
     private void ChooseMeleeCard()
     {
-        int number = UnityEngine.Random.Range(1, 2);
-        int number2 = UnityEngine.Random.Range(1, 2);
+        int number = Randomizer(1, 2);
+        int number2 = Randomizer(1, 2);
         int spot1 = 0;
         int spot2 = 1;
         EnemyDeck deck = GetComponent<EnemyDeck>();
@@ -129,7 +129,7 @@ public class EnemyAI : MonoBehaviour
     private void MoveCardToMelee(bool isgood)
     {
 
-        int number = UnityEngine.Random.Range(1, 6);
+        int number = Randomizer(1, 6);
         if (number < 4)
         {
             isgood = false;
@@ -164,9 +164,14 @@ public class EnemyAI : MonoBehaviour
             Debug.Log("skill issue");
         }
     }
+    private int Randomizer(int Min, int Max)
+    {
+        int number = UnityEngine.Random.Range(Min, Max);
+        return number;
+    }
     IEnumerator YIPPPEEE()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
         {
             yield return new WaitForSeconds(5);
             ChooseRangeCard();

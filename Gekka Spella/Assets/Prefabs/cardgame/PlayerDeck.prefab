@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &14941998415149443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6253092822029776913}
+  - component: {fileID: 4328521519696511363}
+  m_Layer: 0
+  m_Name: PlayerDeck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6253092822029776913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14941998415149443}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4328521519696511363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14941998415149443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e9c639e11fd6d4fbb92177921f38ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardPrefab: {fileID: 5131307390485782418, guid: 5531918f21547b94e991f841be1469f8, type: 3}
+  Hand: {fileID: 0}
+  deck:
+  - {fileID: 11400000, guid: 0af57de1f95c3b64ba29e25c268cc8cd, type: 2}
+  - {fileID: 11400000, guid: d35f03823ab44df45ae49f45ad775d73, type: 2}
+  - {fileID: 11400000, guid: 2e5472039c1265c4f8dac2418b40e020, type: 2}
+  - {fileID: 11400000, guid: 10b526da3a915284f8584e5b62527ee1, type: 2}
+  - {fileID: 11400000, guid: 632a180d587fd984a95dfc4ddbf423b4, type: 2}
+  - {fileID: 11400000, guid: f8dfe3d97a1b63244a19ae4b92f0d10b, type: 2}
+  - {fileID: 11400000, guid: 5deadebe7ba8de841bbc0d7247d0eb77, type: 2}
+  - {fileID: 11400000, guid: 692bc6a5d75ceff45b68b7a175861c14, type: 2}
+  - {fileID: 11400000, guid: e64c6d3e2386826498fcb2fe0870a5a6, type: 2}
+  beginningHand: 3
+  CardToHand: {fileID: 5131307390485782418, guid: 5531918f21547b94e991f841be1469f8, type: 3}
+  cardInDeck1: {fileID: 0}
+  cardInDeck2: {fileID: 0}
+  cardInDeck3: {fileID: 0}
+  cardInDeck4: {fileID: 0}

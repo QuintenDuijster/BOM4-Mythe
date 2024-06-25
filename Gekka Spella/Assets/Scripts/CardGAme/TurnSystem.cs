@@ -14,7 +14,9 @@ public class TurnSystem : MonoBehaviour
     public bool isYourTurn;
     public int yourTurn;
     public int yourOpponentTurn;
-    public TextMeshProUGUI turnText;
+    
+    public GameObject playerturnimage;
+    public GameObject enemyturnimage;
     public int maxMana;
     public int currentMana;
     public TextMeshProUGUI manaText;
@@ -38,11 +40,13 @@ public class TurnSystem : MonoBehaviour
     {
         if(isYourTurn == true)
         {
-            turnText.text = "your turn";
+            enemyturnimage.SetActive(false);
+            playerturnimage.SetActive(true);
         }
         else
         {
-            turnText.text = "your opponent turn";
+            playerturnimage.SetActive(false);
+            enemyturnimage.SetActive(true);
         }
 
         manaText.text = currentMana + "/" + maxMana;

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -14,17 +15,20 @@ public class EnemyAI : MonoBehaviour
 
     private GameObject movedrangecard;
     private GameObject movedmeleecard;
+    private GameObject chosencard;
 
     [SerializeField]private GameObject enemyrange1;
     [SerializeField]private GameObject enemyrange2;
     [SerializeField]private GameObject enemymelee1;
     [SerializeField]private GameObject enemymelee2;
     [SerializeField]private GameObject enemymelee3;
+    [SerializeField]private GameObject enemygrave;
     [SerializeField]private GameObject enemydeck;
     [SerializeField]private GameObject Turnsystem;
 
     private TurnSystem turn;
     private EnemyDeck deck;
+    private Draggable drag;
 
     // Start is called before the first frame update
     void Start()
@@ -32,22 +36,11 @@ public class EnemyAI : MonoBehaviour
         turn = Turnsystem.GetComponent<TurnSystem>();
         deck = enemydeck.GetComponent<EnemyDeck>();
 
-
         TurnSystem.OnEndTurn += handleOnEndTurn;
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-        
-
-    }
     private void ChooseRangeCard()
     {
-        
-        GameObject chosencard;
         if (EnemyCardsinHand.Count > 0)
         {
             if (EnemyCardsinHand[0] != null)
@@ -55,17 +48,14 @@ public class EnemyAI : MonoBehaviour
                 chosencard = EnemyCardsinHand[0];
                 EnemyCardsinHand.RemoveAt(0);
                 movedrangecard = chosencard;
-                
+                drag = movedrangecard.GetComponent<Draggable>();
             }
             else
             {
                 deck.DrawCard(0);
                 Debug.Log("issue in the skill");
             }
-
         }
-        
-        
     }
     private void MoveCardToRange(bool isgood)
     {
@@ -82,49 +72,51 @@ public class EnemyAI : MonoBehaviour
         {
             movedrangecard.transform.SetParent(enemyrange1.transform);
             movedrangecard.transform.localPosition = new Vector3(0,0,0);
+            movedrangecard.GetComponent<Cardback>().TurnCard(false);
+            movedrangecard.transform.tag = "EnemyRangeCard1";
             EnemyCardsinRanged.Add(movedrangecard);
             Debug.Log("ranfe1");
-
         }
-        
         else if ((number > 3 || isgood == true) && enemyrange2.transform.childCount == 0)
         {
-            
             movedrangecard.transform.SetParent(enemyrange2.transform);
             movedrangecard.transform.localPosition = new Vector3(0, 0, 0);
+            movedrangecard.GetComponent<Cardback>().TurnCard(false);
+            movedrangecard.transform.tag = "EnemyRangeCard2";
             EnemyCardsinRanged.Add(movedrangecard);
             Debug.Log("range2");
         }
         else
         {
+            movedrangecard.transform.SetParent(enemygrave.transform);
+            movedrangecard.transform.localPosition = new Vector3(0, 0, 0);
             Debug.Log("skill issue");
         }
     }
 
-    private void ChooseMeleeCard()
+    private void ChooseMeleeCard() // Chposes a Range card to move to Melee
     {
         int number = Randomizer(1, 2);
         int number2 = Randomizer(1, 2);
         int spot1 = 0;
         int spot2 = 1;
         
-        GameObject chosencard;
+        
         if (EnemyCardsinRanged != null && EnemyCardsinRanged.Count > 0)
         {
-            if (number == 1)
+            if (number == 1 && drag.turnsexisted == 1)
             {
                 chosencard = EnemyCardsinRanged[spot1];
                 EnemyCardsinRanged.RemoveAt(spot1);
                 movedmeleecard = chosencard;
-                
-            } else if (number == 2)
+                drag = movedmeleecard.GetComponent<Draggable>();
+            } else if (number == 2 && drag.turnsexisted == 1)
             {
                 chosencard = EnemyCardsinRanged[spot2];
                 EnemyCardsinRanged.RemoveAt(spot2);
                 movedmeleecard = chosencard;
-                
+                drag = movedmeleecard.GetComponent<Draggable>();
             }
-            
         } 
         else 
         {
@@ -138,12 +130,9 @@ public class EnemyAI : MonoBehaviour
                 deck.DrawCard(0);
             }
         }
-
-
     }
-    private void MoveCardToMelee(bool isgood)
+    private void MoveCardToMelee(bool isgood) // Moves the chosen card to Melee
     {
-
         int number = Randomizer(1, 6);
         if (number < 4)
         {
@@ -157,6 +146,8 @@ public class EnemyAI : MonoBehaviour
         {
             movedmeleecard.transform.SetParent(enemymelee1.transform);
             movedmeleecard.transform.localPosition = new Vector3(0, 0, 0);
+            movedmeleecard.GetComponent<Cardback>().TurnCard(false);
+            movedmeleecard.transform.tag = "EnemyMeleeCard1";
             EnemyCardsinMelee.Add(movedmeleecard);
             Debug.Log("meelee1");
         }
@@ -164,6 +155,8 @@ public class EnemyAI : MonoBehaviour
         {
             movedmeleecard.transform.SetParent(enemymelee2.transform);
             movedmeleecard.transform.localPosition = new Vector3(0, 0, 0);
+            movedmeleecard.GetComponent<Cardback>().TurnCard(false);
+            movedmeleecard.transform.tag = "EnemyMeleeCard2";
             EnemyCardsinMelee.Add(movedmeleecard);
             Debug.Log("meelee2");
         }
@@ -171,11 +164,15 @@ public class EnemyAI : MonoBehaviour
         {
             movedmeleecard.transform.SetParent(enemymelee3.transform);
             movedmeleecard.transform.localPosition = new Vector3(0, 0, 0);
+            movedmeleecard.GetComponent<Cardback>().TurnCard(false);
+            movedmeleecard.transform.tag = "EnemyMeleeCard3";
             EnemyCardsinMelee.Add(movedmeleecard);
             Debug.Log("meelee3");
         }
         else
         {
+            movedmeleecard.transform.SetParent(enemygrave.transform);
+            movedmeleecard.transform.localPosition = new Vector3(0, 0, 0);
             Debug.Log("skill issue");
         }
     }
@@ -184,6 +181,7 @@ public class EnemyAI : MonoBehaviour
         int number = UnityEngine.Random.Range(Min, Max);
         return number;
     }
+
     IEnumerator YIPPPEEE()
     {
         for (int i = 0; i < numberofactions; i++)
@@ -193,19 +191,30 @@ public class EnemyAI : MonoBehaviour
             if (EnemyCardsinRanged.Count == 0)
             {
                 ChooseRangeCard();
-                MoveCardToRange(true);
+                if (movedrangecard != null)
+                {
+                    MoveCardToRange(true);
+                }
+                else
+                {
+                    deck.DrawCard(0);
+                }
             }
             else {
                 ChooseMeleeCard();
-                MoveCardToMelee(true);
-            }
-            
-            
-            
+                if (movedmeleecard != null)
+                {
+                    MoveCardToMelee(true);
+                }
+                else
+                {
+                    deck.DrawCard(0);
+                }
+            } 
         }
         turn.EndyourOponentTurn();
-        
     }
+
     void handleOnEndTurn() 
     {
         if (turn.isYourTurn == false)

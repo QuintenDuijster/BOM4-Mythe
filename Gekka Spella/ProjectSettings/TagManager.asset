@@ -16,6 +16,8 @@ TagManager:
   - EnemyRangeCard2
   - PlayerGraveCard
   - EnemyGraveCard
+  - EnemyCard
+  - EnemyAI
   layers:
   - Default
   - TransparentFX

@@ -16,5 +16,5 @@ MonoBehaviour:
   MName: Hydra
   Health: 6
   Power: 4
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: c02ebd3cbdb4bdc459b65eb9ab9147f6, type: 3}
   ManaCost: 3

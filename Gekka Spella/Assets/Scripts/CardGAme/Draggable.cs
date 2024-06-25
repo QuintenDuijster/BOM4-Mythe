@@ -15,6 +15,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     void Start()
     {
         dropscript = GetComponentInParent<DropHere>();
+        TurnSystem.OnEndTurn += IncrementTurnExisted;
     }
     void Update() 
     { 
@@ -85,5 +86,16 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 transform.gameObject.tag = "EnemyGraveCard";
                 break;
         }
+    }
+    public void IncrementTurnExisted()
+    {
+        if (transform.tag == "PlayerRangeCard1" 
+            || transform.tag == "PlayerRangeCard2" 
+            || transform.tag == "EnemyRangeCard1" 
+            || transform.tag == "EnemyRangeCard2") 
+        { 
+            turnsexisted++; 
+        }
+
     }
 }

@@ -434,10 +434,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8579324087333303208}
+  - component: {fileID: -5831794783685103998}
   - component: {fileID: 5492479486447126935}
   - component: {fileID: 1763566885279455224}
   - component: {fileID: 2243781553242944121}
   - component: {fileID: -8895671089668757047}
+  - component: {fileID: 2981827397257872507}
+  - component: {fileID: 4708992829268414218}
   - component: {fileID: 7031467524653838316}
   m_Layer: 5
   m_Name: CardToEnemyHand
@@ -469,6 +472,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &-5831794783685103998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5131307390485782418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac0e124a03501e479de217c7d2e8f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5492479486447126935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,6 +548,32 @@ MonoBehaviour:
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
+--- !u!114 &2981827397257872507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5131307390485782418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde8cc2357a9e7b4ebad40ea7c9b88b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardback: {fileID: 2492224139966854951}
+--- !u!114 &4708992829268414218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5131307390485782418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2f1dfd5f517104c8c7996ee77014de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackData: {fileID: 0}
 --- !u!114 &7031467524653838316
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8c9f46eddd86b945838add71e1f8c9e, type: 3}
-  m_Name: Harpies
+  m_Name: Tree Nymph
   m_EditorClassIdentifier: 
   Id: 7
   MName: Harpies
   Health: 2
   Power: 5
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: 5ca27ae40398c29429118ef9545db481, type: 3}
   ManaCost: 3

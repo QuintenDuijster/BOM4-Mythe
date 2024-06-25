@@ -33,11 +33,12 @@ public class DropHere : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
             {
                 d.parentToReturnTo = this.transform;
                 d.ismelee = false;
+                
             }
-            else if (d != null && (d.tag == "PlayerRangeCard1" ||
-                d.tag == "PlayerRangeCard2") && (this.name == "PlayerMeleePlace1" || 
-                this.name == "PlayerMeleePlace2" || 
-                this.name == "PlayerMeleePlace3")
+            else if (d != null && (d.tag == "PlayerRangeCard1" || d.tag == "PlayerRangeCard2") && (
+                this.name == "PlayerMeleePlace1" && d.turnsexisted >= 1 || 
+                this.name == "PlayerMeleePlace2" && d.turnsexisted >= 1 || 
+                this.name == "PlayerMeleePlace3" && d.turnsexisted >= 1)
                 ) 
             { 
                 d.parentToReturnTo = this.transform;
@@ -48,29 +49,6 @@ public class DropHere : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         {
             d.parentToReturnTo = this.transform;
         }
-
-        //if (d != null && (this.name == "EnemyRangePlace1" || this.name == "EnemyRangePlace2") 
-        //    && d.ismelee == false && this.tag == "EnemyCard")
-        //{
-        //    Debug.Log("mamam");
-        //    d.parentToReturnTo = this.transform;
-        //    d.ismelee = false;
-        //}
-        //else if (d != null && (d.tag == "EnemyRangeCard1" ||
-        //    d.tag == "EnemyRangeCard2") && (this.name == "EnemyMeleePlace1" ||
-        //    this.name == "EnemyMeleePlace2" ||
-        //    this.name == "EnemyMeleePlace3")
-        //    )
-        //{
-        //    d.parentToReturnTo = this.transform;
-        //    d.ismelee = true;
-
-        //}
-        //if (this.name == "EnemyGraveyard" && this.tag == "EnemyCard")
-        //{
-        //    d.parentToReturnTo = this.transform;
-        //}
-
     }
 
 }

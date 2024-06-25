@@ -16,5 +16,5 @@ MonoBehaviour:
   MName: Minotaur
   Health: 3
   Power: 2
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: 59ca55822cb1bb84085808c0f97eaca7, type: 3}
   ManaCost: 1

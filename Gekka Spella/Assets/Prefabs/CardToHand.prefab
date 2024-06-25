@@ -408,7 +408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6222b83bdbaf0f14ca028e7e0d64db91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 9220572170085135248}
   parentToReturnTo: {fileID: 0}
 --- !u!114 &-5614628590682954774
 MonoBehaviour:
@@ -542,6 +541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2f1dfd5f517104c8c7996ee77014de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackData: {fileID: 0}
 --- !u!1 &5441205447524743684
 GameObject:
   m_ObjectHideFlags: 0

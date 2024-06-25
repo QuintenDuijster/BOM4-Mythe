@@ -27,26 +27,26 @@ public class ClickToAttack : MonoBehaviour, IPointerClickHandler
         bool attacking = attackData.GetComponent<AttackData>().attack;
         bool playerCard = gameObject.GetComponent<MyCard>().playercard;
         if (attackData.GetComponent<AttackData>().attack && playerCard)
-        {          
-          
+        {                    
             attackData.GetComponent<AttackData>().power = gameObject.GetComponent<DisplayCard>().power;
-           
-            attackData.GetComponent<AttackData>().attack = false;
-          
+            attackData.GetComponent<AttackData>().attack = false;         
             
         }
-        Debug.Log(attackData.GetComponent<AttackData>().attack);
-        Debug.Log(playerCard);
       
         if(!attackData.GetComponent<AttackData>().attack && !playerCard)
         {
          
             
             healthTarget = this.gameObject.GetComponent<DisplayCard>().health;
-        
-            this.gameObject.GetComponent<DisplayCard>().health = healthTarget - attackData.GetComponent<AttackData>().power;
-           attackData.GetComponent<AttackData>().attack = true;
-            if(gameObject.GetComponent<DisplayCard>().health <= 0) 
+            int damage = attackData.GetComponent<AttackData>().power;
+            healthTarget -= damage;
+
+
+
+            //this.gameObject.GetComponent<DisplayCard>().health = healthTarget - attackData.GetComponent<AttackData>().power;
+            attackData.GetComponent<AttackData>().attack = true;
+            
+            if(healthTarget <= 0) 
             {
                 Destroy(gameObject);
                

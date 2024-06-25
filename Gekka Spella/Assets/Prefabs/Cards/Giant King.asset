@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Giant King
   m_EditorClassIdentifier: 
   Id: 0
-  MName: 
+  MName: Giant King
   Health: 0
   Power: 0
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: 43be96edd6d681a48a24ae341fe5a2df, type: 3}
   ManaCost: 0

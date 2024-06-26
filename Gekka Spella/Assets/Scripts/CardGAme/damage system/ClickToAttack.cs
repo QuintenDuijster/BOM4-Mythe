@@ -10,6 +10,11 @@ public class ClickToAttack : MonoBehaviour
         if (card != null) 
         {
             DisplayCard cardData = card.GetComponent<DisplayCard>();
+            if (!cardData.canAttack)
+            {
+                return;
+            }
+
             if (cardPlace.name is "PlayerRangePlace1" or "PlayerRangePlace2")
             {
                 GameObject enemyCard1;

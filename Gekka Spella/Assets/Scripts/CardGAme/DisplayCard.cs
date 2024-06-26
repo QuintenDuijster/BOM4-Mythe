@@ -9,6 +9,7 @@ public class DisplayCard : MonoBehaviour
     public TextMeshProUGUI HealthText;
     public TextMeshProUGUI ManaText;
     public Image image;
+    public bool canAttack;
 
     private CardSettings cardType;
 

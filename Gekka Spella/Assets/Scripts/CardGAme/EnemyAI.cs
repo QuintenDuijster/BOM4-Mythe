@@ -218,7 +218,7 @@ public class EnemyAI : MonoBehaviour
     }
     private int Randomizer(int Min, int Max)
     {
-        int number = UnityEngine.Random.Range(Min, Max);
+        int number = Random.Range(Min, Max);
         return number;
     }
 

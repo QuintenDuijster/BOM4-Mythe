@@ -1619,7 +1619,8 @@ PrefabInstance:
       propertyPath: playerturnimage
       value: 
       objectReference: {fileID: 339929792}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3940533023471916000, guid: 7c2a1904aba43e74b82f3a86095d8464, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

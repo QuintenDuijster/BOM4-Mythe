@@ -6,15 +6,8 @@ public class CardToHand : MonoBehaviour
 {
     public GameObject Hand;
     public GameObject HandCard;
-    // Update is called once per frame
+
     private void Start()
-    {
-        CardtoHand();
-    }
-    void Update()
-    {
-    }
-    public void CardtoHand()
     {
         Hand = GameObject.Find("Hand");
         HandCard.transform.SetParent(Hand.transform);

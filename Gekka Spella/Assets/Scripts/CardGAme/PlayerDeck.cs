@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class PlayerDeck : MonoBehaviour
 {
+    public TMP_Text healthText;
+    public int heath = 10;
 
     public GameObject CardPrefab;
     public GameObject Hand;
@@ -31,6 +32,8 @@ public class PlayerDeck : MonoBehaviour
     }
     private void Update()
     {
+        healthText.text = heath.ToString();
+
         DeckVisuals();
     }
     public void DrawCard(int cardIndex)

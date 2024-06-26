@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class EnemyDeck : MonoBehaviour
 {
+    public TMP_Text healthText;
+    public int health = 10;
 
     public GameObject CardPrefab;
     public GameObject Hand;
@@ -19,18 +22,28 @@ public class EnemyDeck : MonoBehaviour
     public GameObject cardInDeck2;
     public GameObject cardInDeck3;
     public GameObject cardInDeck4;
-
-
     void Start()
     {
-        Shuffle(deck);
+        runDeck = deck.OrderBy(x => Random.value).ToList();
 
         StartCoroutine(StartGame());
     }
     private void Update()
     {
+        healthText.text = health.ToString();
+
         DeckVisuals();
     }
+
+    IEnumerator StartGame()
+    {
+        for (int i = 0; i < beginningHand; i++)
+        {
+            DrawCard(0);//use 0 only draw the top card
+            yield return new WaitForSeconds(1);
+        }
+    }
+
     public void DrawCard(int cardIndex)
     {
         var NewCard = Instantiate(CardToEnemyHand);
@@ -46,19 +59,6 @@ public class EnemyDeck : MonoBehaviour
         runDeck.RemoveAt(cardIndex);
     }
 
-    public void Shuffle(List<CardSettings> deck)
-    {
-        runDeck = deck.OrderBy(x => Random.value).ToList();
-    }
-
-    IEnumerator StartGame()
-    {
-        for (int i = 0; i < beginningHand; i++)
-        {
-            DrawCard(0);//use 0 only draw the top card
-            yield return new WaitForSeconds(1);
-        }
-    }
     public void DeckVisuals()
     {
         if (runDeck.Count < 20)
@@ -78,5 +78,13 @@ public class EnemyDeck : MonoBehaviour
             cardInDeck4.SetActive(false);
         }
     }
-}
 
+    public void Damage(int damage)
+    {
+        health -= damage;
+        if (health < 0)
+        {
+            //player won
+        }
+    }
+}

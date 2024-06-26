@@ -18,6 +18,9 @@ TagManager:
   - EnemyGraveCard
   - EnemyCard
   - EnemyAI
+  - TurnSystem
+  - PlayerDeck
+  - EnemyDeck
   layers:
   - Default
   - TransparentFX

@@ -7,19 +7,6 @@ public class Cardback : MonoBehaviour
 {
     public GameObject cardback;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-     
-    }
-
-
     public void TurnCard(bool up) {
         if (up == false)
         {

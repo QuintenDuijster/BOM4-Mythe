@@ -1,55 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DropHere : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
+public class DropHere : MonoBehaviour, IDropHandler
 {
-
+    private TurnSystem turnSystem;
     internal int childcount;
+
     void Update()
     {
+        turnSystem = GameObject.FindGameObjectWithTag("TurnSystem").GetComponent<TurnSystem>();
         childcount = transform.childCount;
-    }
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-
-    }
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        
     }
 
     public void OnDrop(PointerEventData eventData)
     {
-        Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
+        Draggable draggable = eventData.pointerDrag.GetComponent<Draggable>();
         if (childcount == 0)
         {
-            if (d != null && this.name == "PlayerRangePlace1" && d.ismelee == false ||
-                this.name == "PlayerRangePlace2" &&
-                d.ismelee == false)
-                
+            if (draggable != null && turnSystem.currentMana > 1 &&
+                (name == "PlayerRangePlace1" && draggable.ismelee == false) ||
+                (name == "PlayerRangePlace2" && draggable.ismelee == false))
+
             {
-                d.parentToReturnTo = this.transform;
-                d.ismelee = false;
-                
+                draggable.parentToReturnTo = transform;
+                draggable.ismelee = false;
+                turnSystem.AddMana(-2);
             }
-            else if (d != null && (d.tag == "PlayerRangeCard1" || d.tag == "PlayerRangeCard2") && (
-                this.name == "PlayerMeleePlace1" && d.turnsexisted >= 1 || 
-                this.name == "PlayerMeleePlace2" && d.turnsexisted >= 1 || 
-                this.name == "PlayerMeleePlace3" && d.turnsexisted >= 1)
-                ) 
-            { 
-                d.parentToReturnTo = this.transform;
-                d.ismelee = true;
+            else if (draggable != null 
+                && turnSystem.currentMana > 1 && (
+                name == "PlayerMeleePlace1" ||
+                name == "PlayerMeleePlace2" ||
+                name == "PlayerMeleePlace3"))
+            {
+                draggable.parentToReturnTo = transform;
+                draggable.ismelee = true;
+                turnSystem.AddMana(-2);
             }
         }
-        if (this.name == "PlayerGraveyard")
+        if (name == "PlayerGraveyard")
         {
-            d.parentToReturnTo = this.transform;
+            draggable.parentToReturnTo = transform;
         }
     }
-
 }
-

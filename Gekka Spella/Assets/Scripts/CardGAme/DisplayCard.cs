@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.Collections.LowLevel.Unsafe;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,28 +21,24 @@ public class DisplayCard : MonoBehaviour
         PowerText.text = power.ToString();
         ManaText.text = mana.ToString();
     }
+
     public void Init(CardSettings cardType) {
 
-       this. cardType = cardType;
+       this.cardType = cardType;
 
-        ShowStats();
-    }
-  
-   void ShowStats()
-    {
-       
         NameText.text = cardType.MName;
         power = cardType.Power;
         health = cardType.Health;
         mana = cardType.ManaCost;
-        image.sprite = cardType.Image; 
+        image.sprite = cardType.Image;
     }
 
-
-     /* NameText.text = cardType.MName;
-        PowerText.text = cardType.Power.ToString();
-        HealthText.text = cardType.Health.ToString();
-        ManaText.text = cardType.ManaCost.ToString();
-        image.sprite = cardType.Image;  */
-
+    public void Damage(int damage)
+    {
+        health -= damage;
+        if (health < 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
+
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     DropHere dropscript;
@@ -19,7 +16,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     }
     void Update() 
     { 
-        if (this.tag == "PlayerGraveCard" ||  this.tag == "EnemyGraveCard")
+        if (tag == "PlayerGraveCard" ||  tag == "EnemyGraveCard")
         {
             Destroy(this);
         }
@@ -27,20 +24,19 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-
-            parentToReturnTo = this.transform.parent;
-            this.transform.SetParent(this.transform.parent.parent);
+            parentToReturnTo = transform.parent;
+            transform.SetParent(transform.parent.parent);
 
             GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
+
     public void OnDrag(PointerEventData eventData)
     {
         this.transform.position = eventData.position;
-        
     }
+
     public void OnEndDrag(PointerEventData eventData)
     {
-        
         this.transform.SetParent(parentToReturnTo);
 
         CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
@@ -87,6 +83,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 break;
         }
     }
+
     public void IncrementTurnExisted()
     {
         if (transform.tag == "PlayerRangeCard1" 
@@ -96,6 +93,5 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         { 
             turnsexisted++; 
         }
-
     }
 }

@@ -1,13 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    internal List<GameObject> EnemyCardsinHand= new List<GameObject>();
+    internal List<GameObject> EnemyCardsinHand = new List<GameObject>();
     internal List<GameObject> EnemyCardsinRanged = new List<GameObject>();
     internal List<GameObject> EnemyCardsinMelee = new List<GameObject>();
 
@@ -30,7 +27,6 @@ public class EnemyAI : MonoBehaviour
     private EnemyDeck deck;
     private Draggable drag;
 
-    // Start is called before the first frame update
     void Start()
     {
         turn = Turnsystem.GetComponent<TurnSystem>();
@@ -57,6 +53,7 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
+
     private void MoveCardToRange(bool isgood)
     {
         int number = Randomizer(1, 6);
@@ -91,6 +88,49 @@ public class EnemyAI : MonoBehaviour
             movedrangecard.transform.SetParent(enemygrave.transform);
             movedrangecard.transform.localPosition = new Vector3(0, 0, 0);
             Debug.Log("skill issue");
+        }
+    }
+
+    private void Attack(GameObject cardPlace)
+    {
+        GameObject card = GameObject.FindGameObjectWithTag(cardPlace.name.Replace("Place", "Card"));
+        GameObject enemyCard = GameObject.FindGameObjectWithTag(cardPlace.name.Replace("Enemy", "Player").Replace("Place", "Card"));
+        EnemyDeck enemyDeck = GameObject.FindGameObjectWithTag("PlayerDeck").GetComponent<EnemyDeck>();
+        if (card != null)
+        {
+            DisplayCard cardData = card.GetComponent<DisplayCard>();
+            if (cardPlace.name is "EnemyRangePlace1" or "EnemyRangePlace2")
+            {
+                GameObject enemyCard1 = GameObject.FindGameObjectWithTag("PlayerMeleePlace1");
+                if (enemyCard1 != null)
+                {
+                    DisplayCard enemyCard1Data = enemyCard1.GetComponent<DisplayCard>();
+                    enemyCard1Data.Damage(cardData.power);
+                }
+
+                GameObject enemyCard2 = GameObject.FindGameObjectWithTag("PlayerMeleePlace2");
+                if (enemyCard2 != null)
+                {
+                    DisplayCard enemyCard2Data = enemyCard2.GetComponent<DisplayCard>();
+                    enemyCard2Data.Damage(cardData.power);
+                }
+
+                GameObject enemyCard3 = GameObject.FindGameObjectWithTag("PlayerMeleePlace3");
+                if (enemyCard3 != null)
+                {
+                    DisplayCard enemyCard3Data = enemyCard3.GetComponent<DisplayCard>();
+                    enemyCard3Data.Damage(cardData.power);
+                }
+            }
+            else if (enemyCard != null)
+            {
+                DisplayCard enemyData = enemyCard.GetComponent<DisplayCard>();
+                enemyData.Damage(cardData.power);
+            }
+            else
+            {
+                enemyDeck.Damage(cardData.power);
+            }
         }
     }
 

@@ -12,14 +12,7 @@ public class CardToEnemyHand : MonoBehaviour
     private void Start()
     {
         enemyai = GameObject.Find("EnemyAI");
-        CardtoEnemyHand();
-    }
-    void Update()
-    {
-    }
-    public void CardtoEnemyHand()
-    {
-        
+
         EnemyAI ai = enemyai.GetComponent<EnemyAI>();
         ai.EnemyCardsinHand.Add(HandCard);
         EnemyHand = GameObject.Find("EnemyHand");

@@ -1,60 +1,71 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-
-public class ClickToAttack : MonoBehaviour, IPointerClickHandler
+public class ClickToAttack : MonoBehaviour
 {
-   
-    internal int healthTarget;
-    internal int newHealth;
-    internal int attacker;
-    internal bool attack = true;
-    internal GameObject target;
-    public GameObject attackData;
-    DisplayCard DisplayCard;
-    
-
-
-    public void OnPointerClick(PointerEventData eventData)
+    public void onClick(GameObject cardPlace)
     {
-        attackData = GameObject.Find("data");
-        bool attacking = attackData.GetComponent<AttackData>().attack;
-        bool playerCard = gameObject.GetComponent<MyCard>().playercard;
-        if (attackData.GetComponent<AttackData>().attack && playerCard)
-        {                    
-            attackData.GetComponent<AttackData>().power = gameObject.GetComponent<DisplayCard>().power;
-            attackData.GetComponent<AttackData>().attack = false;         
-            
-        }
-      
-        if(!attackData.GetComponent<AttackData>().attack && !playerCard)
+        GameObject card = GameObject.FindGameObjectWithTag(cardPlace.name.Replace("Place", "Card"));
+        GameObject enemyCard = GameObject.FindGameObjectWithTag(cardPlace.name.Replace("Player", "Enemy").Replace("Place", "Card"));
+        EnemyDeck enemyDeck = GameObject.FindGameObjectWithTag("EnemyDeck").GetComponent<EnemyDeck>();
+        if (card != null) 
         {
-         
-            
-            healthTarget = this.gameObject.GetComponent<DisplayCard>().health;
-            int damage = attackData.GetComponent<AttackData>().power;
-            healthTarget -= damage;
-
-
-
-            //this.gameObject.GetComponent<DisplayCard>().health = healthTarget - attackData.GetComponent<AttackData>().power;
-            attackData.GetComponent<AttackData>().attack = true;
-            
-            if(healthTarget <= 0) 
+            DisplayCard cardData = card.GetComponent<DisplayCard>();
+            if (cardPlace.name is "PlayerRangePlace1" or "PlayerRangePlace2")
             {
-                Destroy(gameObject);
-               
-            }
-           
-        }
+                GameObject enemyCard1;
+                try
+                {
+                    enemyCard1 = GameObject.FindGameObjectWithTag("EnemyMeleePlace1");
+                }
+                catch
+                {
+                    enemyCard1 = null;
+                }
+                if (enemyCard1 != null)
+                {
+                    DisplayCard enemyCard1Data = enemyCard1.GetComponent<DisplayCard>();
+                    enemyCard1Data.Damage(cardData.power);
+                }
 
-        
+                GameObject enemyCard2;
+                try
+                {
+                    enemyCard2 = GameObject.FindGameObjectWithTag("EnemyMeleePlace2");
+                }
+                catch
+                {
+                    enemyCard2 = null;
+                }
+                if (enemyCard2 != null)
+                {
+                    DisplayCard enemyCard2Data = enemyCard2.GetComponent<DisplayCard>();
+                    enemyCard2Data.Damage(cardData.power);
+                }
+
+                GameObject enemyCard3;
+                try
+                {
+                    enemyCard3 = GameObject.FindGameObjectWithTag("EnemyMeleePlace3");
+                }
+                catch
+                {
+                    enemyCard3 = null;
+                }
+                if (enemyCard3 != null)
+                {
+                    DisplayCard enemyCard3Data = enemyCard3.GetComponent<DisplayCard>();
+                    enemyCard3Data.Damage(cardData.power);
+                }
+            }
+            else if (enemyCard != null)
+            {
+                DisplayCard enemyData = enemyCard.GetComponent<DisplayCard>();
+                enemyData.Damage(cardData.power); 
+            }
+            else
+            {
+                enemyDeck.Damage(cardData.power);
+            }
+        }
     }
-    
 }

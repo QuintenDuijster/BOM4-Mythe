@@ -1,15 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TurnSystem : MonoBehaviour
 {
     public static int cardsInPlay;
-
 
     public bool isYourTurn;
     public int yourTurn;
@@ -21,10 +16,7 @@ public class TurnSystem : MonoBehaviour
     public int currentMana;
     public TextMeshProUGUI manaText;
 
-
     public static Action OnEndTurn;
-
-
 
     void Start()
     {
@@ -72,7 +64,6 @@ public class TurnSystem : MonoBehaviour
 
             if (currentMana < maxMana)
             {
-
                 //currentMana += 1;
                 FindObjectOfType<CardFieldChecker>().CheckCardFieldsAndUpdateMana();
             }
@@ -83,6 +74,14 @@ public class TurnSystem : MonoBehaviour
     public void AddMana(int amount)
     {
         currentMana += amount;
-        Debug.Log("Mana added: " + amount + ", Total mana: " + currentMana);
+        if (currentMana < 0)
+        {
+            currentMana = 0;
+        }
+
+        if (currentMana > maxMana)
+        {
+            currentMana = maxMana;
+        }
     }
 }

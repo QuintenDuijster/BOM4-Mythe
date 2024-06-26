@@ -1,8 +1,10 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDeck : MonoBehaviour
 {
@@ -26,7 +28,7 @@ public class PlayerDeck : MonoBehaviour
 
     void Start()
     {
-        Shuffle(deck);
+        runDeck = deck.OrderBy(x => Random.value).ToList();
 
         StartCoroutine(StartGame());
     }
@@ -37,30 +39,28 @@ public class PlayerDeck : MonoBehaviour
         DeckVisuals();
     }
     public void DrawCard(int cardIndex)
-    {   
-        var NewCard = Instantiate(CardToHand);
-
-        
-        NewCard.transform.position = new Vector3(-100, 0, 0);
-
-        cardsInHand.Add(NewCard);
-
-        DisplayCard dcs = NewCard.GetComponent<DisplayCard>();
-        dcs.Init(runDeck[cardIndex]);
-
-        runDeck.RemoveAt(cardIndex);
-    }
-
-    public void Shuffle(List<CardSettings> deck)
     {
-        runDeck = deck.OrderBy(x => Random.value).ToList();
+        if (cardsInHand.Count < 5)
+        {
+            var NewCard = Instantiate(CardToHand);
+
+
+            NewCard.transform.position = new Vector3(-100, 0, 0);
+
+            cardsInHand.Add(NewCard);
+
+            DisplayCard dcs = NewCard.GetComponent<DisplayCard>();
+            dcs.Init(runDeck[cardIndex]);
+
+            runDeck.RemoveAt(cardIndex);
+        }
     }
 
     IEnumerator StartGame()
     {
         for (int i = 0; i < beginningHand; i++)
         {
-            DrawCard(0);//use 0 only draw the top card
+            DrawCard(0);
             yield return new WaitForSeconds(1);
         }
     }
@@ -81,6 +81,15 @@ public class PlayerDeck : MonoBehaviour
         if (runDeck.Count < 1)
         {
             cardInDeck4.SetActive(false);
+        }
+    }
+
+    public void Damage(int damage)
+    {
+        heath -= damage;
+        if (heath <= 0)
+        {
+            SceneManager.LoadScene(3);
         }
     }
 }

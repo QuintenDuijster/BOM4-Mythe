@@ -1396,6 +1396,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2243347899878083340, guid: 4a2a8efada20ece48991e3dd08b10242, type: 3}
   m_PrefabInstance: {fileID: 2078875178}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1423548004 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3312213671357010412, guid: 4a2a8efada20ece48991e3dd08b10242, type: 3}
+  m_PrefabInstance: {fileID: 2078875178}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1428600854
 GameObject:
   m_ObjectHideFlags: 0
@@ -2692,6 +2697,10 @@ PrefabInstance:
       propertyPath: Turnsystem
       value: 
       objectReference: {fileID: 1288831350}
+    - target: {fileID: 2934132311741064928, guid: a1d8761e4cb1862428765c23b37a8ea7, type: 3}
+      propertyPath: enemygrave
+      value: 
+      objectReference: {fileID: 1423548004}
     - target: {fileID: 2934132311741064928, guid: a1d8761e4cb1862428765c23b37a8ea7, type: 3}
       propertyPath: turnbutton
       value: 

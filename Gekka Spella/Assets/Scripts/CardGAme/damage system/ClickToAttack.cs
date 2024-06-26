@@ -7,13 +7,16 @@ public class ClickToAttack : MonoBehaviour
         GameObject card = GameObject.FindGameObjectWithTag(cardPlace.name.Replace("Place", "Card"));
         GameObject enemyCard = GameObject.FindGameObjectWithTag(cardPlace.name.Replace("Player", "Enemy").Replace("Place", "Card"));
         EnemyDeck enemyDeck = GameObject.FindGameObjectWithTag("EnemyDeck").GetComponent<EnemyDeck>();
+
         if (card != null) 
         {
             DisplayCard cardData = card.GetComponent<DisplayCard>();
-            if (!cardData.canAttack)
+            if (cardData == null || !cardData.canAttack)
             {
                 return;
             }
+
+            cardData.canAttack = false;
 
             if (cardPlace.name is "PlayerRangePlace1" or "PlayerRangePlace2")
             {

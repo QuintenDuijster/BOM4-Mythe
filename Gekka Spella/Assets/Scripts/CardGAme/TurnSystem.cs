@@ -1,10 +1,11 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class TurnSystem : MonoBehaviour
 {
-    public static int cardsInPlay;
+    public static List<GameObject> cardsInPlay = new List<GameObject>();
 
     public bool isYourTurn;
     public int yourTurn;
@@ -53,6 +54,22 @@ public class TurnSystem : MonoBehaviour
 
             OnEndTurn?.Invoke();
         }
+
+        foreach (GameObject card in cardsInPlay)
+        {
+            try
+            {
+                DisplayCard cardData = card.GetComponent<DisplayCard>();
+                if (cardData != null)
+                {
+                    cardData.canAttack = true;
+                }
+            }
+            catch
+            {
+                Debug.Log("what");
+            }
+        }
     }
 
     public void EndyourOponentTurn()
@@ -64,10 +81,16 @@ public class TurnSystem : MonoBehaviour
 
             if (currentMana < maxMana)
             {
-                //currentMana += 1;
                 FindObjectOfType<CardFieldChecker>().CheckCardFieldsAndUpdateMana();
             }
+
+            ResetEnemyAttack();
         }
+    }
+
+    private void ResetEnemyAttack()
+    {
+
     }
 
     // Method to add mana

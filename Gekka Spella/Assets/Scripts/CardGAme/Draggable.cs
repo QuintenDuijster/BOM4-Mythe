@@ -46,40 +46,22 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         switch (parentname)
         {
             case "PlayerMeleePlace1":
-                transform.gameObject.tag = "PlayerMeleeCard1";
-                    break;
             case "PlayerMeleePlace2":
-                transform.gameObject.tag = "PlayerMeleeCard2";
-                break;
             case "PlayerMeleePlace3":
-                transform.gameObject.tag = "PlayerMeleeCard3";
-                break;
             case "PlayerRangePlace1":
-                transform.gameObject.tag = "PlayerRangeCard1";
-                break;
             case "PlayerRangePlace2":
-                transform.gameObject.tag = "PlayerRangeCard2";
-                break;
             case "EnemyMeleePlace1":
-                transform.gameObject.tag = "EnemyMeleeCard1";
-                break;
             case "EnemyMeleePlace2":
-                transform.gameObject.tag = "EnemyMeleeCard2";
-                break;
             case "EnemyMeleePlace3":
-                transform.gameObject.tag = "EnemyMeleeCard3";
-                break;
             case "EnemyRangePlace1":
-                transform.gameObject.tag = "EnemyRangeCard1";
-                break;
             case "EnemyRangePlace2":
-                transform.gameObject.tag = "EnemyRangeCard2";
+                TurnSystem.cardsInPlay.Add(transform.gameObject);
+                transform.tag = parentname.Replace("Place", "Card");
                 break;
             case "PlayerGraveyard":
-                transform.gameObject.tag = "PlayerGraveCard";
-                break;
             case "EnemyGraveyard":
-                transform.gameObject.tag = "EnemyGraveCard";
+                TurnSystem.cardsInPlay.Remove(transform.gameObject);
+                transform.gameObject.tag = "PlayerGraveCard";
                 break;
         }
     }

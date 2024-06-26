@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyDeck : MonoBehaviour
 {
@@ -16,12 +17,13 @@ public class EnemyDeck : MonoBehaviour
     List<CardSettings> runDeck = new List<CardSettings>();
     public int beginningHand = 0;
     // public int deckSize;
-    private List<GameObject> cardsInHand = new List<GameObject>();
+    public List<GameObject> cardsInHand = new List<GameObject>();
     public GameObject CardToEnemyHand;
     public GameObject cardInDeck1;
     public GameObject cardInDeck2;
     public GameObject cardInDeck3;
     public GameObject cardInDeck4;
+
     void Start()
     {
         runDeck = deck.OrderBy(x => Random.value).ToList();
@@ -46,17 +48,20 @@ public class EnemyDeck : MonoBehaviour
 
     public void DrawCard(int cardIndex)
     {
-        var NewCard = Instantiate(CardToEnemyHand);
+        if (cardsInHand.Count < 5)
+        {
+            var NewCard = Instantiate(CardToEnemyHand);
 
 
-        NewCard.transform.position = new Vector3(-100, 0, 0);
+            NewCard.transform.position = new Vector3(-100, 0, 0);
 
-        cardsInHand.Add(NewCard);
+            cardsInHand.Add(NewCard);
 
-        DisplayCard dcs = NewCard.GetComponent<DisplayCard>();
-        dcs.Init(runDeck[cardIndex]);
+            DisplayCard dcs = NewCard.GetComponent<DisplayCard>();
+            dcs.Init(runDeck[cardIndex]);
 
-        runDeck.RemoveAt(cardIndex);
+            runDeck.RemoveAt(cardIndex);
+        }
     }
 
     public void DeckVisuals()
@@ -82,9 +87,9 @@ public class EnemyDeck : MonoBehaviour
     public void Damage(int damage)
     {
         health -= damage;
-        if (health < 0)
+        if (health <= 0)
         {
-            //player won
+            SceneManager.LoadScene(2);
         }
     }
 }

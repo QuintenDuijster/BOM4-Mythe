@@ -11,7 +11,12 @@ public class ClickToAttack : MonoBehaviour
         if (card != null) 
         {
             DisplayCard cardData = card.GetComponent<DisplayCard>();
-            if (cardData == null || !cardData.canAttack)
+            if (cardData == null)
+            {
+                return;
+            }
+
+            if (!cardData.canAttack)
             {
                 return;
             }

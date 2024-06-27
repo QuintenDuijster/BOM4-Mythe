@@ -9,7 +9,7 @@ public class DisplayCard : MonoBehaviour
     public TextMeshProUGUI HealthText;
     public TextMeshProUGUI ManaText;
     public Image image;
-    public bool canAttack;
+    public bool canAttack = true;
 
     private CardSettings cardType;
 
@@ -37,9 +37,24 @@ public class DisplayCard : MonoBehaviour
     public void Damage(int damage)
     {
         health -= damage;
+
         if (health <= 0)
         {
-            Destroy(gameObject);
+			if (transform.tag.Contains("Enemy"))
+			{
+				EnemyAI ai = GameObject.FindGameObjectWithTag("EnemyAi").GetComponent<EnemyAI>();
+
+				if (transform.tag.Contains("Melee"))
+				{
+                    ai.EnemyCardsinMelee.Remove(transform.gameObject);
+                }
+                else
+                {
+					ai.EnemyCardsinRanged.Remove(transform.gameObject);
+				}
+			}
+
+			Destroy(gameObject);
         }
     }
 }

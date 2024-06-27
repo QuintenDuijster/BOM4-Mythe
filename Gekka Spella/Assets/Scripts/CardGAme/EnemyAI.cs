@@ -39,8 +39,15 @@ public class EnemyAI : MonoBehaviour
     {
         List<GameObject> cardsInUse = new List<GameObject>(EnemyCardsinMelee);
         cardsInUse.AddRange(EnemyCardsinRanged);
-        int random = Random.Range(0, cardsInUse.Count);
-        return cardsInUse[random];
+        if (cardsInUse.Count > 0)
+        {
+			int random = Random.Range(0, cardsInUse.Count);
+			return cardsInUse[random];
+        }
+        else
+        {
+            return null;
+        }
     }
 
     private void MoveCardFromRangeToMelee()
@@ -90,19 +97,16 @@ public class EnemyAI : MonoBehaviour
         if (number == 0 && enemymelee1.transform.childCount == 0)
         {
             IntantiateCard(enemymelee1, card);
-            EnemyCardsinMelee.Add(card);
             return true;
         }
         else if (number == 1 && enemymelee2.transform.childCount == 0)
         {
             IntantiateCard(enemymelee2, card);
-            EnemyCardsinMelee.Add(card);
             return true;
         }
         else if (number == 2 && enemymelee3.transform.childCount == 0)
         {
             IntantiateCard(enemymelee3, card);
-            EnemyCardsinMelee.Add(card);
             return true;
         }
 
@@ -126,14 +130,16 @@ public class EnemyAI : MonoBehaviour
             yield return new WaitForSeconds(2);
             if (number == 0)
             {
-                int index = Random.Range(0, 5);
+                int index = Random.Range(0, EnemyCardsinHand.Count - 1);
                 MoveCardToMelee(EnemyCardsinHand[index]);
+                EnemyCardsinHand.RemoveAt(index);
             }
             else if (number == 1)
             {
-                int index = Random.Range(0, 5);
+                int index = Random.Range(0, EnemyCardsinHand.Count - 1);
                 MoveCardToRange(EnemyCardsinHand[index]);
-            }
+				EnemyCardsinHand.RemoveAt(index);
+			}
             else if (number == 2)
             {
                 MoveCardFromRangeToMelee();
@@ -153,20 +159,25 @@ public class EnemyAI : MonoBehaviour
 
     private void Attack()
     {
+        Debug.Log("Attack");
+
         GameObject child = ChooseCard();
         if (child != null)
         {
             GameObject cardPlace = child.transform.parent.gameObject;
             GameObject card = GameObject.FindGameObjectWithTag(cardPlace.name.Replace("Place", "Card"));
-            GameObject enemyCard = GameObject.FindGameObjectWithTag(cardPlace.name.Replace("Enemy", "Player").Replace("Place", "Card"));
-            EnemyDeck enemyDeck = GameObject.FindGameObjectWithTag("PlayerDeck").GetComponent<EnemyDeck>();
+            GameObject playerCard = GameObject.FindGameObjectWithTag(cardPlace.name.Replace("Enemy", "Player").Replace("Place", "Card"));
+            EnemyDeck playerDeck = GameObject.FindGameObjectWithTag("PlayerDeck").GetComponent<EnemyDeck>();
             if (card != null)
             {
                 DisplayCard cardData = card.GetComponent<DisplayCard>();
 
-                Debug.Log("test");
+                if (cardData != null)
+                {
+                    return;
+                }
 
-                if (cardData != null || !cardData.canAttack)
+                if (!cardData.canAttack)
                 {
                     return;
                 }
@@ -175,63 +186,59 @@ public class EnemyAI : MonoBehaviour
 
                 if (cardPlace.name is "EnemyRangePlace1" or "EnemyRangePlace2")
                 {
-                    GameObject enemyCard1;
+                    GameObject playerCard1;
                     try
                     {
-                        enemyCard1 = GameObject.FindGameObjectWithTag("PlayerMeleePlace1");
+                        playerCard1 = GameObject.FindGameObjectWithTag("PlayerMeleePlace1");
                     }
                     catch
                     {
-                        enemyCard1 = null;
+                        playerCard1 = null;
                     }
-                    if (enemyCard1 != null)
+                    if (playerCard1 != null)
                     {
-                        DisplayCard enemyCard1Data = enemyCard1.GetComponent<DisplayCard>();
-                        enemyCard1Data.Damage(cardData.power);
+                        DisplayCard playerCard1Data = playerCard1.GetComponent<DisplayCard>();
+						playerCard1Data.Damage(cardData.power);
                     }
 
-                    GameObject enemyCard2;
+                    GameObject playerCard2;
                     try
                     {
-                        enemyCard2 = GameObject.FindGameObjectWithTag("PlayerMeleePlace2");
+                        playerCard2 = GameObject.FindGameObjectWithTag("PlayerMeleePlace2");
                     }
                     catch
                     {
-                        enemyCard2 = null;
+                        playerCard2 = null;
                     }
-                    if (enemyCard2 != null)
+                    if (playerCard2 != null)
                     {
-                        DisplayCard enemyCard2Data = enemyCard2.GetComponent<DisplayCard>();
-                        enemyCard2Data.Damage(cardData.power);
+                        DisplayCard playerCard2Data = playerCard2.GetComponent<DisplayCard>();
+                        playerCard2Data.Damage(cardData.power);
                     }
 
-                    GameObject enemyCard3;
+                    GameObject playerCard3;
                     try
                     {
-                        enemyCard3 = GameObject.FindGameObjectWithTag("PlayerMeleePlace3");
+                        playerCard3 = GameObject.FindGameObjectWithTag("PlayerMeleePlace3");
                     }
                     catch
                     {
-                        enemyCard3 = null;
+                        playerCard3 = null;
                     }
-                    if (enemyCard3 != null)
+                    if (playerCard3 != null)
                     {
-                        DisplayCard enemyCard3Data = enemyCard3.GetComponent<DisplayCard>();
-                        enemyCard3Data.Damage(cardData.power);
-
-                        Debug.Log("Damage Card1");
+                        DisplayCard playerCard3Data = playerCard3.GetComponent<DisplayCard>();
+                        playerCard3Data.Damage(cardData.power);
                     }
                 }
-                else if (enemyCard != null)
+                else if (playerCard != null)
                 {
-                    Debug.Log("Damage Card2");
-                    DisplayCard enemyData = enemyCard.GetComponent<DisplayCard>();
-                    enemyData.Damage(cardData.power);
+                    DisplayCard playerCardData = playerCard.GetComponent<DisplayCard>();
+					playerCardData.Damage(cardData.power);
                 }
                 else
                 {
-                    Debug.Log("Damage Player");
-                    enemyDeck.Damage(cardData.power);
+                    playerDeck.Damage(cardData.power);
                 }
             }
         }
